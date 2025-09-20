@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ngrok App</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container-box">
+    <h2>Ngrok App</h2>
+
+    <div class="section">
+        <h4>Ativar ngrok TCP 22</h4>
+        <button class="btn btn-primary action-host w-100" onclick="startTcp(this)">Executar TCP</button>
+        <div class="copy-group">
+            <pre class="output-host" id="tcpOutput"> </pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h4>Ativar ngrok HTTP</h4>
+        <div class="input-group">
+            <input id="httpPortInput" type="text" placeholder="Porta" value="80">
+            <button class="btn btn-success action-host" onclick="startHttp(this)">Executar HTTP</button>
+        </div>
+        <div class="copy-group">
+            <pre class="output-host" id="httpOutput"> </pre>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
