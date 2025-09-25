@@ -1,39 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ngrok App</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Gerenciar Túnel Ngrok</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<div class="container-box">
-    <h2>Ngrok App</h2>
-
-    <div class="section">
-        <h4>Ativar ngrok TCP 22</h4>
-        <button class="btn btn-primary action-host w-100" onclick="startTcp(this)">Executar TCP</button>
-        <div class="copy-group">
-            <pre class="output-host" id="tcpOutput"> </pre>
-        </div>
+    <div class="container">
+        <h1>Ngrok Manage</h1>
+        <form method="post">
+            <input type="number" name="porta" placeholder="Port" required>
+            <button type="submit">Open</button>
+        </form>
+        {% if url %}
+        <p>Túnel ativo em: <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+        {% endif %}
     </div>
-
-    <div class="section">
-        <h4>Ativar ngrok HTTP</h4>
-        <div class="input-group">
-            <input id="httpPortInput" type="text" placeholder="Porta" value="80">
-            <button class="btn btn-success action-host" onclick="startHttp(this)">Executar HTTP</button>
-        </div>
-        <div class="copy-group">
-            <pre class="output-host" id="httpOutput"> </pre>
-        </div>
-    </div>
-
-
-</div>
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
-

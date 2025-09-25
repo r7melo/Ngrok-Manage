@@ -1,33 +1,109 @@
+/* Paleta de Cores:
+   - Fundo Geral: #0d0d0d (Charcoal)
+   - Container: #1a1a1a (Cinza Escuro)
+   - Botões/Destaque: #0a76c0 (Azul Vibrante)
+   - Texto: #ffffff (Branco)
+*/
+
 body {
-    background: #f8f9fa;
-    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d0d0d;
     display: flex;
+    justify-content: center;
     align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #ffffff; /* Texto geral branco */
+}
+
+.container {
+    background-color: #1a1a1a;
+    padding: 40px; /* Padding generoso */
+    border-radius: 12px; /* Cantos arredondados */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Sombra forte */
+    width: 350px; /* Largura fixa para o card */
+}
+
+/* Estilização do Título (TUNNELS) */
+.container h1 {
+    font-size: 1.8em;
+    font-weight: 800; /* Extra bold */
+    letter-spacing: 3px; /* Espaçamento clean */
+    margin-bottom: 30px;
+    padding: 10px 0;
+    text-transform: uppercase;
+    
+    /* Linhas horizontais estilizadas */
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Espaçamento para o formulário e a mensagem de resultado */
+.container form {
+    margin-bottom: 25px;
+    display: flex;
     justify-content: center;
 }
-.container-box {
-    background: #fff;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 480px;
-    text-align: center;
+
+.container p {
+    font-size: 1em;
+    margin-top: 20px;
+    padding-top: 10px;
 }
-h2 { font-size: 26px; font-weight: 600; margin-bottom: 20px; }
-h4 { margin-top: 25px; font-size: 20px; font-weight: 500; }
-pre { background: #f7f7f7; padding: 15px; border-radius: 10px; font-size: 16px; word-break: break-word; margin-top: 10px; flex: 1; }
-input { font-size: 18px; text-align: center; border-radius: 10px; margin-right: 10px; }
-.btn { font-size: 18px; border-radius: 10px; }
-.input-group { display: flex; justify-content: center; margin-top: 10px; }
-.copy-group {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+
+input[type="number"] {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #333; /* Borda sutil */
+    background-color: #0d0d0d; /* Cor do fundo geral */
+    color: #ffffff;
+    width: 120px;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus {
+    border-color: #0a76c0; /* Destaca ao focar */
+    outline: none;
+}
+
+/* Estilo do botão primário (Abrir Túnel) */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #0a76c0; /* Azul vibrante */
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #075a96; /* Escurece levemente o azul */
+    transform: translateY(-1px); /* Leve elevação */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo para o link de Túnel Ativo (aqui atua como um botão/label estilizado) */
+a {
+    color: #ffffff;
+    background: #0a76c0; /* Azul vibrante */
+    padding: 10px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    display: inline-block;
     margin-top: 10px;
+    word-break: break-all; /* Garante que a URL não quebre o layout */
 }
-.btn-copy {
-    margin-left: 10px;
-    font-size: 14px;
-    padding: 6px 12px;
+
+a:hover {
+    background: #075a96; /* Escurece levemente o azul no hover */
+    transform: none; /* Não aplica elevação em links de resultado, apenas no botão de ação */
+    box-shadow: none;
 }

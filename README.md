@@ -1,78 +1,95 @@
-# 🐳 Ngrok-Manage (Ngrok Tunnel Management with Docker)
+# 🐳 Ngrok-Manage (Gerenciamento de Túnel Ngrok com Docker)
 
-This repository is a demo project for anyone who wants to learn about Docker and, most importantly, manage Ngrok tunnels efficiently. The application, built with Flask and Python, provides a web interface that allows you to create, monitor, and control Ngrok tunnels, all running inside a Docker container.
+Este repositório é um projeto demo para quem quer aprender sobre Docker e, principalmente, gerenciar túneis Ngrok de forma eficiente. A aplicação, construída com Flask e Python, oferece uma interface web que permite criar, monitorar e controlar túneis Ngrok, todos rodando dentro de um contêiner Docker.
 
-The main goal of this project is **Ngrok tunnel management**. Additionally, you will learn how to:
+O objetivo principal deste projeto é gerenciamento de túneis Ngrok. Além disso, você vai aprender a:
 
-- Create a Dockerfile to package a Python application.
-- Build and run a Docker container.
-- Map ports and use volumes (-v) to persist Ngrok configuration data.
+- Criar um Dockerfile para empacotar uma aplicação Python.
+- Construir e rodar um contêiner Docker.
+- Mapear portas e usar volumes (-v) para persistir dados de configuração do Ngrok.
 
-🛠️ Example Application
+🛠️ Aplicação de Exemplo
 
-The application provides a simple web interface to:
+A aplicação fornece uma interface web simples para:
 
-- Start new Ngrok tunnels (HTTP/HTTPS).
-- Monitor active tunnels and their public URLs.
-- Stop or restart existing tunnels.
+- Iniciar novos túneis Ngrok (HTTP/HTTPS).
+- Monitorar túneis ativos e seus URLs públicos.
+- Parar ou reiniciar túneis existentes.
 
-The interface makes it easy to manage tunnels without relying on the command line.
+A interface facilita o gerenciamento de túneis sem depender do terminal.
 
-📁 Project Structure
+📁 Estrutura do Projeto
 ```
 Ngrok-Manage/
 │
-├── app.py                # Main Flask application logic
+├── app.py                # Lógica principal da aplicação Flask
 ├── templates/
-│   └── index.html        # HTML template for the homepage
+│   └── index.html        # Template HTML da página inicial
 ├── static/
-│   └── style.css         # Optional CSS for styling
-├── ngrok_config.json     # Optional default configuration for Ngrok tunnels
-├── requirements.txt      # Python dependencies (Flask)
-└── Dockerfile            # Instructions to build the Docker image
+│   └── style.css         # CSS opcional para estilização
+├── ngrok_config.json     # Configuração padrão opcional dos túneis Ngrok
+├── requirements.txt      # Dependências Python (Flask)
+└── Dockerfile            # Instruções para construir a imagem Docker
 ```
-🚀 How to Use and Learn
+🚀 Como Usar e Aprender
 
-1. Build the Docker Image
+1. Construir a Imagem Docker
 
-Open your terminal in the project root and run:
+    Abra o terminal na raiz do projeto e execute:
 
-docker build -t ngrok-manage:1.0 .
+`docker build -t ngrok-manage:1.0` .
 
-2. Prepare a Configuration Folder
+2. Preparar uma Pasta de Configuração
 
-Create a local folder to store Ngrok logs and configuration:
+    Crie uma pasta local para armazenar logs e configurações do Ngrok:
 
-mkdir ~/ngrok_data
+    `mkdir ~/ngrok_data`
 
-Place any Ngrok .json configuration files in this folder if needed.
+    Coloque quaisquer arquivos de configuração .json do Ngrok nessa pasta, se necessário.
 
-3. Run the Container
+3. Rodar o Contêiner
 
-Run the container, mounting the folder you created:
+    Execute o contêiner, conectando a pasta criada:
 
-```
-docker run -d \
-  -p 5000:5000 \
-  -v ~/ngrok_data:/root/ngrok_data \
-  --name ngrok-manage \
-  ngrok-manage:1.0
-```
-Explanation of parameters:
+    ```
+    docker run -d \
+      -p 5000:5000 \
+      -v ~/ngrok_data:/root/ngrok_data \
+      --name ngrok-manage \
+      ngrok-manage:1.0
+    ```
+    Explicação dos parâmetros:
 
-- `-d`: Runs the container in the background.
-- `-p 5000:5000`: Maps port 5000 on your machine to port 5000 in the container.
-- `-v ~/ngrok_data:/root/ngrok_data`: Connects the local folder to the container folder, persisting data.
-- `--name ngrok-manage`: Assigns an easy-to-use name to the container.
+    - `-d`: Executa o contêiner em segundo plano.
+    - `-p 5000:5000`: Mapeia a porta 5000 da sua máquina para a porta 5000 do contêiner.
+    - `-v ~/ngrok_data:/root/ngrok_data`: Conecta a pasta local à pasta do contêiner, persistindo os dados.
+    - `--name ngrok-manage`: Dá um nome fácil de usar ao contêiner.
 
-4. Access the Application
+4. Acessar a Aplicação
 
-Open your browser at:
+    Abra o navegador em:
 
-http://localhost:5000
+    `http://localhost:5000`
 
-You will see the Ngrok tunnel management interface. Create, monitor, or stop tunnels. Changes to configuration files in the local folder are immediately reflected in the app.
+    Você verá a interface de gerenciamento dos túneis Ngrok. Crie, monitore ou pare túneis. Mudanças nos arquivos de configuração na pasta local são refletidas imediatamente na aplicação.
 
-🤝 Contributing
+    📦 Variáveis de Ambiente (.env)
 
-Feel free to use this project as a base for managing Ngrok tunnels and learning Docker/Flask. Suggestions or improvements can be submitted via issue or pull request.
+    Para facilitar a configuração, você pode criar um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+    ```
+    POST_URL=<url-api>
+    POST_ID=<id>
+    NGROK_AUTHTOKEN=<token-ngrok>
+    AUTH_API=<token-api>
+    ```
+
+    - **POST_URL**: URL que receberá requisições POST da aplicação.
+    - **POST_ID**: ID usado para identificar o POST.
+    - **NGROK_AUTHTOKEN**: Token de autenticação do Ngrok.
+    - **AUTH_API**: Chave de autenticação da API interna.
+
+    Coloque essas variáveis no `.env` e certifique-se de que o Flask esteja configurado para ler essas variáveis ao iniciar a aplicação.
+
+🤝 Contribuindo
+
+Sinta-se à vontade para usar este projeto como base para gerenciar túneis Ngrok e aprender Docker/Flask. Sugestões ou melhorias podem ser enviadas via issue ou pull request.
